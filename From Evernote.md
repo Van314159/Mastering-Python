@@ -1,4 +1,7 @@
 ## General concept of python
+
+',' is the way to construct a tuple. So `a, b = 1, 2` in full form is `(a, b) = (1, 2)`. 
+
 The speed  of `for` loop is low in python while fast in C. Since `map` funciton and `list comprehension` are written in C, refer to them instead of `for` loop will always improve performance and make the code pythonic. But there are cases where these two method give no obvious result.
 
 `local variable` is faster then `global variable`. If you need to call a global variable in your function, it's better to copy it as a  local variable. Note the funciton name is a global variable.
@@ -51,6 +54,31 @@ print('time = ', time.time()-t)
 
 ## Python Writing Style
 http://docs.python-guide.org/en/latest/writing/style/
+
+### The use of `blankline`:
+1. There should be a `blank line` between two functions.
+2. There shoould be two `blank line` between two classes.
+
+### Docstring
+http://www.python.org/dev/peps/pep-0257/
+There are two forms of docstring: one-line docstring and multi-line docstrings.
+For consistency, always use `'''xxxxx''''`, so you can expand it when necessary.
+
+#### One-line docstring
+```
+def primes(n):
+    '''Return True if the integer n is prime.'''
+    if n is prime:
+        return True
+    else:
+        return False
+```
+Note: 
+
+1. One-line docstring should be one line. 
+2. No black lines before and after the docstring.
+3. The closing quotes are in the same line as teh opening quotes.
+4. It's a command not a description; e.g, don't use `Returns ...`.
 
 In order to keep a clear intent and a sustainable readability level, it is preferable to aviod returning meaningful values from many output points in the body.
 ```
