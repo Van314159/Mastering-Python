@@ -56,7 +56,7 @@ print('time = ', time.time()-t)
 http://docs.python-guide.org/en/latest/writing/style/
 
 ### The use of `blankline`:
-1. There should be a `blank line` between two functions.
+1. There should be one `blank line` between two functions.
 2. There shoould be two `blank line` between two classes.
 
 ### Docstring
