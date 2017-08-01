@@ -1,6 +1,6 @@
 ## General concept of python
 
-',' is the way to construct a tuple. So `a, b = 1, 2` in full form is `(a, b) = (1, 2)`. 
+`,` is the way to construct a tuple. So `a, b = 1, 2` in full form is `(a, b) = (1, 2)`. 
 
 The speed  of `for` loop is low in python while fast in C. Since `map` funciton and `list comprehension` are written in C, refer to them instead of `for` loop will always improve performance and make the code pythonic. But there are cases where these two method give no obvious result.
 
