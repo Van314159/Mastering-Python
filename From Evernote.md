@@ -1,9 +1,9 @@
 ## General concept of python
-python 的 for 循环 和 C 的 for 循环是完全不同层面的. C 的 for 循环速度飞快，而 python 的 for 循环速度缓慢. 而 map 函数 和 list comprehension 所用的循环就是 C 编写的. 所以， 尽量不要用 python 的 for 循环.
+The speed  of `for` loop is low in python while fast in C. Since `map` funciton and `list comprehension` are written in C, refer to them instead of `for` loop will always improve performance and make the code pythonic. But there are cases where these two method give no obvious result.
 
-local variable 比 global variable 更快。比如你在函数里需要调用 global variable， 那最好先把它 copy 为 local variable。函数名是 global variable。
+`local variable` is faster then `global variable`. If you need to call a global variable in your function, it's better to copy it as a  local variable. Note the funciton name is a global variable.
 
-下面三段代码展示了上两段的含义.
+The following codes illustrate the above opinion.
 
 ```
 import time
@@ -13,11 +13,56 @@ def doit1(i):
     x = x + i
 
 list1 = range(100000)
-t = time.time()     # 直接在代码主体调用 for 循环.
-for i in list1:
+t = time.time()     
+for i in list1:         # Call function name in a global for loop.
     doit1(i)
 
 print('time = ', time.time()-t)
 
 >>> time =  0.08408689498901367
+```
+```
+x = 0
+def doit2(list_):
+    global x
+    for i in list_:     # Call for loop locally. 
+        x = x + i       
+
+t = time.time()
+doit2(list1)
+
+print('time = ', time.time()-t)
+
+>>>time =  0.020014047622680664     # The speed is 4 times faster.
+```
+```
+x = 0
+def doit3(list_):
+    global x
+    x = sum(list_)     # Call the builtin sum function.
+    print(x)           
+t = time.time()
+doit3(list1)
+
+print('time = ', time.time()-t)
+
+>>> time =  0.007987022399902344    # The speed is 10 times faster.
+```
+
+## Python Writing Style
+http://docs.python-guide.org/en/latest/writing/style/
+
+In order to keep a clear intent and a sustainable readability level, it is preferable to aviod returning meaningful values from many output points in the body.
+```
+def complex_function(a, b, c):
+    if not a:
+        return None  # Raising an exception might be better
+    if not b:
+        return None  # Raising an exception might be better
+    # Some complex code trying to compute x from a, b and c
+    # Resist temptation to return x if succeeded
+    if not x:
+        # Some Plan-B computation of x
+    return x  # One single exit point for the returned value x will help
+              # when maintaining the code.
 ```
