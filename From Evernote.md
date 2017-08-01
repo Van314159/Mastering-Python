@@ -61,6 +61,7 @@ http://docs.python-guide.org/en/latest/writing/style/
 
 ### Docstring
 http://www.python.org/dev/peps/pep-0257/
+
 There are two forms of docstring: one-line docstring and multi-line docstrings.
 For consistency, always use `'''xxxxx''''`, so you can expand it when necessary.
 
