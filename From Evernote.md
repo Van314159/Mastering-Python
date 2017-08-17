@@ -95,3 +95,7 @@ def complex_function(a, b, c):
     return x  # One single exit point for the returned value x will help
               # when maintaining the code.
 ```
+
+## Time
+
+In `jupyter notebook`, you can call magic method `%%timeit` to evaluate one-line code. If you are using mpmath, you can refer to `mp.timing(func, *args, **kwargs)
